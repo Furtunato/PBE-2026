@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers;
+use \App\Models\Clientes;
+use Illuminate\Http\Request;
+
+class ClienteController extends Controller
+{
+    public function index() {
+        $Clientes= \App\Models\Clientes::all();
+        return view('clientes.index', compact('Clientes'));
+    }
+
+    public function create(){
+        return view('clientes.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|unique:clientes',
+            'email' => 'required|email|unique:clientes',
+            'telefone' => 'required|string',
+            'endereco' => 'nullable|string',
+        ]);
+
+        Clientes::create($request->all());
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso!');
+    }
+}
