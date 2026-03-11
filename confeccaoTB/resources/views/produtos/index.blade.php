@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
@@ -43,6 +42,22 @@
                                 <p class="text-sm text-indigo-600 font-medium">
                                     📦 Estoque: {{ $produto->quantidade }}
                                 </p>
+                            </div>
+
+                            <!-- Rodapé do card -->
+                             <div class="flex items-center justify-end mt-6 pt-4 border-t border-gray-200 space-x-4">
+                                <a href="{{ route('produtos.edit', $produto->id) }}" class="text-indigo-600 hover:text-indigo-900 text-sm font-semibold flex items-center">
+                                    Editar
+                                </a>
+
+                                <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este produto?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-500 hover:text-red-700 text-sm font-semibold">
+                                        Excluir
+                                    </button>
+                                </form>
+                                
                             </div>
                         </div>
 
