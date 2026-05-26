@@ -46,15 +46,25 @@ O sistema opera em 3 etapas principais:
 
 ---
 
-### ✨ Funcionalidades
+### ✅ Funcionalidades Implementadas
 
-- ✅ **Login por perfil** (Admin, Professor, Portaria)
-- ✅ **Cadastro de autorizações** com dados do aluno e responsável
-- ✅ **Controle de status** em tempo real (pendente → aprovado → liberado)
-- ✅ **Aprovação em 3 etapas** com validações por perfil
-- ✅ **Interface responsiva** adaptada para cada usuário
-- ✅ **Registro de logs** para rastreabilidade
-- ✅ **Notificações simuladas** (WhatsApp/E-mail)
+- Login por perfil (Admin, Professor, Portaria)
+- Cadastro de autorizações com dados do aluno e responsável
+- Controle de status em tempo real (pendente → aprovado → liberado)
+- Aprovação em 3 etapas com validações por perfil
+- Interface responsiva adaptada para cada usuário
+- Registro de logs para rastreabilidade
+- Simulação de notificações via Log
+
+---
+
+### ⏳ Funcionalidades Pendentes (Desafio)
+
+| Funcionalidade | Status | Descrição |
+|----------------|--------|-----------|
+| **WhatsApp Real** | ⏳ Pendente | Integração com API oficial do WhatsApp |
+| **E-mail Real** | ⏳ Pendente | Configuração com Mailpit/SMTP real |
+| **Notificações Automáticas** | ⏳ Pendente | Disparo em tempo real para responsáveis |
 
 ---
 
@@ -109,7 +119,26 @@ safe/
 
 ### 📌 Status do Projeto
 
-✅ **Concluído** - Sistema funcional com todos os requisitos atendidos
+🚧 **Em Desenvolvimento** - 80% concluído
+
+**Partes Concluídas:**
+- ✅ Sistema de autenticação e perfis
+- ✅ Fluxo completo de autorização
+- ✅ Interface para todos os perfis
+- ✅ Controle de status
+
+**Partes Pendentes:**
+- ⏳ Integração com WhatsApp real
+- ⏳ Disparo de e-mails reais
+- ⏳ Notificações automáticas em tempo real
+
+---
+
+### 🔜 Próximos Passos
+
+1. Implementar integração com API do WhatsApp Business
+2. Configurar envio de e-mails com fila (queue)
+3. Adicionar webhooks para notificações em tempo real
 
 ---
 
