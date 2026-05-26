@@ -1,58 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## 📚 SAFE - Sistema de Autorização e Fluxo Escolar
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Sobre o Projeto
 
-## About Laravel
+O **SAFE** é um sistema web desenvolvido para digitalizar e otimizar o processo de autorização de saída/entrada de alunos em instituições de ensino, eliminando autorizações em papel e proporcionando um fluxo digital seguro e rastreável.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🎯 Objetivo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Modernizar a comunicação entre coordenação, professores e portaria, garantindo que nenhum aluno saia da escola sem a devida autorização, com registro digital de todas as etapas.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🔄 Fluxo de Funcionamento
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+O sistema opera em 3 etapas principais:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+| Etapa | Responsável | Ação |
+|-------|-------------|------|
+| 1 | **Coordenação (AQV)** | Cria e assina a autorização |
+| 2 | **Professor** | Libera o aluno da sala de aula |
+| 3 | **Portaria** | Libera a catraca para saída |
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 👥 Perfis de Acesso
 
-```bash
-composer require laravel/boost --dev
+| Perfil | Função |
+|--------|--------|
+| **Admin (AQV)** | Cria autorizações, assina digitalmente, acompanha todo o fluxo |
+| **Professor** | Visualiza alunos autorizados e libera da sala |
+| **Portaria** | Visualiza alunos liberados pelo professor e libera a catraca |
 
-php artisan boost:install
+---
+
+### 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Finalidade |
+|------------|------------|
+| Laravel 13.x | Framework principal |
+| PHP 8.4 | Linguagem backend |
+| MySQL | Banco de dados |
+| Tailwind CSS | Interface responsiva |
+| Laragon | Ambiente de desenvolvimento |
+
+---
+
+### ✨ Funcionalidades
+
+- ✅ **Login por perfil** (Admin, Professor, Portaria)
+- ✅ **Cadastro de autorizações** com dados do aluno e responsável
+- ✅ **Controle de status** em tempo real (pendente → aprovado → liberado)
+- ✅ **Aprovação em 3 etapas** com validações por perfil
+- ✅ **Interface responsiva** adaptada para cada usuário
+- ✅ **Registro de logs** para rastreabilidade
+- ✅ **Notificações simuladas** (WhatsApp/E-mail)
+
+---
+
+### 📊 Estrutura do Banco de Dados
+
+**Tabela `users`**
+- Armazena dados de login e perfil de acesso
+
+**Tabela `autorizacaos`**
+- Registra todas as solicitações
+- Controla status em cada etapa (status_aqv, status_professor, status_portaria)
+
+---
+
+### 🔒 Segurança
+
+- Autenticação obrigatória para acessar o sistema
+- Redirecionamento por perfil
+- Proteção contra acesso não autorizado a rotas
+- Senhas criptografadas (bcrypt)
+
+---
+
+### 📁 Estrutura do Projeto
+
+```
+safe/
+├── app/
+│   ├── Http/Controllers/     # Controladores da aplicação
+│   ├── Models/                # Models (User, Autorizacao)
+│   └── Services/              # Serviços adicionais
+├── database/
+│   ├── migrations/            # Estrutura do banco
+│   └── seeders/               # Dados iniciais
+├── resources/views/           # Interfaces do sistema
+└── routes/web.php             # Rotas da aplicação
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+### 🚀 Benefícios
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Benefício | Descrição |
+|-----------|-----------|
+| **Segurança** | Controle total sobre quem autoriza a saída |
+| **Rastreabilidade** | Histórico completo de cada autorização |
+| **Agilidade** | Processo digital, sem papel |
+| **Organização** | Centralização das informações |
+| **Transparência** | Status visível para todos os envolvidos |
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 📌 Status do Projeto
 
-## Security Vulnerabilities
+✅ **Concluído** - Sistema funcional com todos os requisitos atendidos
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### 👨‍💻 Autor
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Desenvolvido como solução para otimização de fluxo escolar
+
+---
+
+**SAFE - Segurança e Agilidade no Fluxo Escolar**
